@@ -5,6 +5,7 @@ d3.json("samples.json").then((data)=>{
     data.names.forEach(function(otu){
     testSubjects.append("option").text(otu).property("value");
     });
+    displayMetaData(940,dataSet);
 })
 
 function displayMetaData(otu, data){
@@ -20,5 +21,3 @@ function displayMeta(row){
     })
     return line;
 }
-
-displayMetaData(940,dataSet);
