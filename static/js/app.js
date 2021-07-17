@@ -2,10 +2,11 @@ var testSubjects = d3.select("#selDataset");
 var dataSet;
 d3.json("samples.json").then((data)=>{
     dataSet = data;
+    displayMetaData(940,dataSet);
     data.names.forEach(function(otu){
     testSubjects.append("option").text(otu).property("value");
     });
-    displayMetaData(940,dataSet);
+    
 })
 
 function displayMetaData(otu, data){
