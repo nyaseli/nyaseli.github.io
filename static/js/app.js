@@ -77,7 +77,7 @@ function bubbleChart(otu, data){
     Plotly.newPlot("bubble",result,layout);
 }
 
-function optionChanges(option){
+function optionChanged(option){
     displayMetaData(option,dataSet);
     barChart(option,dataSet);
     bubbleChart(option,dataSet);
