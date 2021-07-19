@@ -7,6 +7,7 @@ d3.json("samples.json").then((data)=>{
     });
     displayMetaData(940,dataSet);
     barChart(940,dataSet);
+    bubbleChart(940,dataSet);
 })
 
 function displayMetaData(otu, data){
@@ -47,4 +48,31 @@ function barChart(otu, data){
 
     };
     Plotly.newPlot("bar",result,layout);
+}
+
+function bubbleChart(otu, data){
+    var chartData = data.samples.filter(sample => sample.id == otu);
+    var mappedData = chartData.map(row => row.otu_ids);
+    var value = chartData.map(row => row.sample_values);
+    var labels = chartData.map(row => row.otu_labels);
+    var circleColor = chartData.map(row => row.otu_ids);
+    var circleSize = chartData.map(row => row.sample_values);
+    var trace = {
+        x:value[0], 
+        y:mappedData[0],
+        text:labels[0],
+        mode:"markers",
+        marker:{
+            color:circleColor[0],
+            size:circleSize[0]
+        }
+    };
+    var result = [trace];
+    var layout = {
+        xaxis:{
+            title:"OTU ID"
+        }
+
+    };
+    Plotly.newPlot("bubble",result,layout);
 }
